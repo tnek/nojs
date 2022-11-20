@@ -1,0 +1,39 @@
+{{template "header"}}
+<nav id="nav-contain" class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item btn ml-auto">
+            <a class="nav-link" href="/"><i id="logo" class="fas"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item bar">
+            <a class="nav-link" href="login">Login</a>
+        </li>
+        <li class="nav-item bar">
+            <a class="nav-link" href="register">Register</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="card container">
+    <div class="row">
+        <div class="col-sm-5">
+            <div id="login-container">
+                <h5>Login</h5>
+                <p class="login-error">{{ .Error }}</p>
+                <form method="POST" action="login">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn meow login">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "footer"}}

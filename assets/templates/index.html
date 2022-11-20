@@ -1,0 +1,72 @@
+{{ template "header" }}
+
+<nav id="nav-contain" class="navbar navbar-expand-lg navbar-light bg-light">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/"><img src="/static/img/logo.png" class="logo" class="fas"></i></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <li class="nav-item bar">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </ul>
+</nav>
+<marquee><img class="turtle-marquee" src="/static/img/black-sqctf.png"></img></marquee>
+
+<div id="site-body" class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="profile-card">
+                <div class="col-sm-3">
+                    <div id="profile-info">
+                        <img id="profile-picture" src="{{ .ProfilePictureURL }}" class="profile-picture"></img>
+                        <p id="name">User: '{{ .User.Name }}'</p>
+                    </div>
+                </div>
+            </div>
+            <div class="submission site-card">
+                <div class="container-fluid submission-container">
+                    <div class="submission-row row">
+                        <form id="submit-form" action="post" method="post">
+                            <input id="submit-text" placeholder="Untitled note" name="submission-title" class="submission-title" form="submit-form"></input>
+                            <textarea id="submit-text" placeholder="Write something..." name="submission-text" class="submission-text" form="submit-form"></textarea>
+                            <div class="share-button">
+                                <input id="submit-text" placeholder="(Optional): Recipient username" name="recipient" class="submission-title" form="submit-form"></input>
+                                <button type="submit" class="btn btn-primary submission-button">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            {{ if .Notes }}
+            <ul id="post-container">
+                {{ range .Notes }}
+                <li>
+                    <div class="post container-fluid">
+                        <div class="col-sm-11">
+                            <div class="post-title">{{ .Title }}</div>
+                            {{ if .Author.Name }}
+                            <div class="post-author">by <b>'{{ .Author.Name }}'</b></div>
+                            {{ end }}
+                            <div class="post-content">{{ .Contents }}</div>
+                        </div>
+                        {{ if eq .AuthorID $.User.ID }}
+                        <a class="btn btn-primary submission-button" href="delete?id={{ .ID}}">Delete</a>
+                        {{ end }}
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+{{ template "footer" }}

